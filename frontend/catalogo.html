@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - VT Solutions</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tu CSS compilado -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="container-fluid px-4">
+            <a href="principal.html" class="navbar-brand">
+                <img src="img/logo.png" class="logo" alt="VT Solutions">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="catalogo.html">Servicios & Productos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="carrito.html">Carrito</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="login.html">Cerrar Sesion</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container my-5">
+        <h1 class="text-center mb-4">Nuestros Productos</h1>
+
+        <!-- Barra de búsqueda -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-6 col-md-8">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar producto..." aria-label="Buscar">
+                    <button class="btn btn-primary" type="button">Buscar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Producto 1: MacBook Pro M5 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/producto01.jpg" class="card-img-top" alt="MacBook Pro M5" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">MacBook Pro M5</h5>
+                        <p class="card-text text-muted">Chip M5 Max, 16GB RAM, 512GB SSD, Cámara Center Stahe 12MP...</p>
+                        <p class="card-text fw-bold text-primary">$2099.99</p>
+                        <a href="detalle.html?id=1" class="btn btn-primary mt-auto">Ver detalle</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 2: ¡Phone 17 Pro Max -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/producto02.jpg" class="card-img-top" alt="¡Phone 17 Pro Max" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">¡Phone 17 Pro Max</h5>
+                        <p class="card-text text-muted">Chip A19 Pro, 12GB RAM, ProMotion OLED 6,9", Cámara 48MP...</p>
+                        <p class="card-text fw-bold text-primary">$1199.99</p>
+                        <a href="detalle.html?id=2" class="btn btn-primary mt-auto">Ver detalle</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 3: AirPods Pro 3 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/producto03.jpg" class="card-img-top" alt="AirPods Pro 3" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">AirPods Pro 3</h5>
+                        <p class="card-text text-muted">Chip H2, 8 horas de autonomía, Cancelación de ruido, Antiagua, Antipolvo,...</p>
+                        <p class="card-text fw-bold text-primary">$329.99</p>
+                        <a href="detalle.html?id=3" class="btn btn-primary mt-auto">Ver detalle</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 4: ¡Pad Pro M5 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/producto04.jpg" class="card-img-top" alt="¡Pad Pro M5" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">¡Pad Pro M5</h5>
+                        <p class="card-text text-muted">Chip M5, 8GB RAM, 512GB Almacenamiento Pantalla OLED 13",  ...</p>
+                        <p class="card-text fw-bold text-primary">$199.99</p>
+                        <a href="detalle.html?id=4" class="btn btn-primary mt-auto">Ver detalle</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Producto 5: Apple Watch Ultra 3 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm product-card">
+                    <img src="img/producto05.jpg" class="card-img-top" alt="Apple Watch Ultra 3" style="height: 200px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Apple Watch Ultra 3</h5>
+                        <p class="card-text text-muted">Protección anual contra malware y ransomware...</p>
+                        <p class="card-text fw-bold text-primary">$799.99</p>
+                        <a href="detalle.html?id=5" class="btn btn-primary mt-auto">Ver detalle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="mt-5">
+        <div class="footer-top text-light">
+            <div class="container py-3">
+                <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <img src="img/logo.png" class="logo" alt="VT Solutions Logo">
+                    </div>
+                    <a href="#" class="btn btn-primary btn-sm rounded-pill px-4">
+                        Contacto
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom text-light">
+            <div class="container py-3">
+                <div class="d-flex justify-content-between flex-wrap small">
+                    <div class="d-flex gap-3">
+                        <a href="#" class="footer-link">Políticas de privacidad</a>
+                        <a href="#" class="footer-link">Acerca de nosotros</a>
+                        <a href="#" class="footer-link">Lo que hacemos</a>
+                    </div>
+                    <div>
+                        © 2026 VT Solutions. All rights reserved.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

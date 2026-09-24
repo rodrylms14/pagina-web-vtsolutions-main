@@ -1,0 +1,136 @@
+INSTRUCCIONES PARA LEVANTAR EL PROYECTO pagina-web-vtsolutions
+
+Para ejecutar correctamente el proyecto se deben levantar MongoDB, el
+backend y el frontend.
+
+================================================== 1. INICIAR MONGODB
+==================================================
+
+Abra una terminal y ejecute:
+
+mongod
+
+Si el comando “mongod” no es reconocido y tiene MongoDB 8.0 instalado en
+la ubicación predeterminada de Windows, utilice:
+
+& “C:Files\8.0.exe”
+
+Cuando aparezca el mensaje “Waiting for connections” en el puerto 27017,
+MongoDB estará funcionando correctamente.
+
+IMPORTANTE: No cierre esta terminal mientras utiliza el proyecto.
+
+================================================== 2. ABRIR MONGODB
+COMPASS ==================================================
+
+Abra MongoDB Compass y conéctese utilizando:
+
+mongodb://localhost:27017
+
+================================================== 3. ABRIR EL PROYECTO
+EN VS CODE ==================================================
+
+Abra en Visual Studio Code la carpeta principal:
+
+pagina-web-vtsolutions-main
+
+================================================== 4. PREPARAR EL
+BACKEND ==================================================
+
+Abra una nueva terminal dentro del proyecto e ingrese a la carpeta
+backend:
+
+cd backend
+
+Si es la primera vez que ejecuta el proyecto o no tiene instaladas las
+dependencias, ejecute:
+
+npm install
+
+================================================== 5. CARGAR LOS DATOS
+INICIALES ==================================================
+
+Si necesita inicializar o volver a cargar los datos de la base de datos,
+ejecute:
+
+npm run seed
+
+NOTA: No es necesario ejecutar “npm run seed” cada vez que se levanta el
+proyecto. Se utiliza para cargar los datos iniciales definidos en el
+proyecto.
+
+================================================== 6. LEVANTAR EL
+BACKEND ==================================================
+
+Desde la carpeta backend, ejecute:
+
+npm run dev
+
+El servidor debería quedar disponible en:
+
+http://localhost:4000
+
+IMPORTANTE: No cierre esta terminal.
+
+================================================== 7. LEVANTAR EL
+FRONTEND ==================================================
+
+Abra una nueva terminal dentro del proyecto e ingrese a la carpeta
+frontend:
+
+cd frontend
+
+Luego ejecute:
+
+npx http-server -p 8080
+
+Si npx pregunta si desea instalar el paquete “http-server”, acepte la
+instalación.
+
+================================================== 8. ABRIR LA PÁGINA
+WEB ==================================================
+
+Una vez levantado el frontend, abra en el navegador:
+
+http://localhost:8080
+
+También puede utilizar:
+
+http://127.0.0.1:8080
+
+La terminal puede mostrar otra dirección similar a:
+
+http://192.168.x.x:8080
+
+localhost y 127.0.0.1 permiten acceder a la página desde la misma
+computadora.
+
+La dirección 192.168.x.x corresponde a la IP privada de la computadora y
+puede permitir acceder al sitio desde otros dispositivos conectados a la
+misma red, dependiendo de la configuración de red y del firewall.
+
+================================================== RESUMEN RÁPIDO
+==================================================
+
+TERMINAL 1 - MongoDB mongod
+
+MongoDB: Puerto 27017
+
+TERMINAL 2 - Backend cd backend npm run dev
+
+Backend: http://localhost:4000
+
+TERMINAL 3 - Frontend cd frontend npx http-server -p 8080
+
+Frontend: http://localhost:8080
+
+================================================== NOTAS IMPORTANTES
+==================================================
+
+-   Mantenga abiertas las tres terminales mientras utiliza el proyecto.
+-   “npm install” solo es necesario cuando las dependencias todavía no
+    están instaladas o han cambiado.
+-   “npm run seed” se utiliza para cargar los datos iniciales de la base
+    de datos y no es necesario ejecutarlo cada vez que se inicia el
+    proyecto.
+-   MongoDB debe estar ejecutándose antes de levantar el backend.
