@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 
@@ -54,6 +55,14 @@ const createProduct = async (req, res) => {
         message: 'Todos los campos son obligatorios'
       });
     }
+
+
+if (!mongoose.Types.ObjectId.isValid(category)) {
+  return res.status(400).json({
+    ok: false,
+    message: 'El ID de la categoría no es válido'
+  });
+}
 
     const categoryExists = await Category.findById(category);
 

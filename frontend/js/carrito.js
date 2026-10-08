@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 
   function renderCart(cart) {
-    const items = cart.items || [];
+    const items = cart.products || [];
     if (!items.length) {
       tbody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-muted">Tu carrito está vacío.</td></tr>';
       if (countEl) countEl.textContent = '0 artículos';
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                    onerror="this.src='https://picsum.photos/seed/${p._id}/60/60'">
               <div>
                 <div class="fw-semibold">${p.name}</div>
-                <button "onclick="removeItem('${p._id}')">Eliminar</button>
+                <button onclick="removeItem('${p._id}')">Eliminar</button>
               </div>
             </div>
           </td>
