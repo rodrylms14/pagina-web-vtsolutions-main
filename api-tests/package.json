@@ -1,0 +1,22 @@
+{
+  "name": "api-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --runInBand"
+  },
+  "jest": {
+  "setupFiles": [
+    "<rootDir>/config/jestSetup.js"
+  ],
+  "testEnvironment": "node"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "axios": "^1.20.0",
+    "jest": "^30.5.2"
+  }
+}
