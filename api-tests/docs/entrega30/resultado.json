@@ -1,0 +1,39 @@
+{
+  "sourceRevision": "902aa26f5ab25ff745f55db7d4e0de6fa6d6ef2f",
+  "executedAt": "2026-10-29T00:10:44.989Z",
+  "localDate": "28/10/2026, 18:10:44",
+  "passed": 30,
+  "failed": 0,
+  "skipped": 0,
+  "positive": 13,
+  "negative": 17,
+  "endpoints": [
+    "DELETE /api/categories/:id",
+    "GET /api/cart/:userId",
+    "GET /api/categories",
+    "GET /api/products",
+    "GET /api/products/:id",
+    "POST /api/auth/login",
+    "POST /api/auth/register",
+    "POST /api/cart",
+    "POST /api/categories",
+    "POST /api/products",
+    "PUT /api/cart/:id",
+    "PUT /api/cart/:userId/item/:productId",
+    "PUT /api/categories/:id"
+  ],
+  "distinctPathShapes": [
+    "/api/auth/login",
+    "/api/auth/register",
+    "/api/cart",
+    "/api/cart/:param",
+    "/api/cart/:param/item/:param",
+    "/api/categories",
+    "/api/categories/:param",
+    "/api/products",
+    "/api/products/:param"
+  ],
+  "databaseRemoved": true,
+  "backendChanges": 0,
+  "dependencyInstallation": "Se reutilizaron dependencias instaladas mediante NODE_PATH; el backend ejecutado es el de main 902aa26."
+}

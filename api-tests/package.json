@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand"
+    "test": "jest --runInBand",
+    "test:entrega": "jest --config jest.entrega.config.cjs --runInBand",
+    "demo:entrega": "node scripts/run-entrega.js"
   },
   "jest": {
-  "setupFiles": [
-    "<rootDir>/config/jestSetup.js"
-  ],
-  "testEnvironment": "node"
-},
+    "setupFiles": [
+      "<rootDir>/config/jestSetup.js"
+    ],
+    "testEnvironment": "node"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
