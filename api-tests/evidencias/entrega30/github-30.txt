@@ -1,0 +1,9 @@
+Inicio 2026-10-29T00:10:44.989Z; revisión 902aa26f5ab25ff745f55db7d4e0de6fa6d6ef2f; API local 4001.
+
+Test Suites: 4 passed, 4 total
+Tests:       30 passed, 30 total
+Snapshots:   0 total
+Time:        15.697 s
+Ran all test suites.
+Test results written to: evidencias\entrega30\github-30.json
+Limpieza comprobada: base temporal eliminada.
