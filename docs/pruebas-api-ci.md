@@ -6,6 +6,8 @@ El 9 de noviembre de 2026 se ejecutó validacion-local: 4 suites y 30 casos apro
 
 ## Flujo implementado
 
+La primera ejecución remota falló antes de las pruebas: MongoDB rechazó el kernel del runner ubuntu-latest (SERVER-121912). Se fijó runs-on en ubuntu-22.04 para evitar esa incompatibilidad. Esta corrección requiere una nueva ejecución remota para confirmar el resultado.
+
 GitHub Actions descarga el código, configura Node.js 22, inicia MongoDB 8 y espera su comprobación de salud. Instala las dependencias de backend y api-tests con npm ci y ejecuta npm run demo:entrega -- ci.
 
 El ejecutor existente crea una base temporal con nombre único, conecta Mongoose, inicia Express en 127.0.0.1:4001 y ejecuta las cuatro suites de entrega: autenticación, categorías, productos y carrito (30 casos). Al terminar cierra la API, elimina solamente su base temporal y registra la limpieza.

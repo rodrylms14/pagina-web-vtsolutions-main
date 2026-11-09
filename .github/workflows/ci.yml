@@ -15,7 +15,8 @@ on:
 jobs:
   preparar-entorno:
     name: Preparar entorno Node.js
-    runs-on: ubuntu-latest
+    # Evitar el kernel de Ubuntu 26 incompatible con MongoDB (SERVER-121912).
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     services:
       mongodb:
