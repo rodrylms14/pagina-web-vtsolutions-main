@@ -10,6 +10,8 @@ if (mongoServer.protocol !== 'mongodb:' || !['localhost', '127.0.0.1'].includes(
   throw new Error('TEST_MONGODB_SERVER debe indicar solamente un servidor MongoDB local, sin credenciales ni base compartida.');
 }
 const label = process.argv[2] || 'entrega30';
+// Solo la demostración explícita agrega una assertion que debe fallar.
+const controlledFailure = process.argv.includes('--fallo-controlado');
 if (!/^[a-z\d_-]+$/i.test(label)) throw new Error('Etiqueta inválida');
 const output = path.join(root, 'api-tests/evidencias/entrega30');
 fs.mkdirSync(output, { recursive: true });
@@ -25,7 +27,10 @@ async function main() {
   await require('../../backend/src/models/User').init();
   server = require('../../backend/src/app').listen(4001, '127.0.0.1');
   await once(server, 'listening');
-  child = spawn(process.execPath, [require.resolve('jest/bin/jest'), '--config', 'jest.entrega.config.cjs', '--runInBand', '--json', '--outputFile', path.join(output, `${label}.json`)], {
+  const jestArgs = [require.resolve('jest/bin/jest'), '--config', 'jest.entrega.config.cjs', '--runInBand', '--json', '--outputFile', path.join(output, `${label}.json`)];
+  if (controlledFailure) jestArgs.push('--setupFilesAfterEnv', path.join(__dirname, 'fallo-controlado.cjs'));
+  record.controlledFailure = controlledFailure;
+  child = spawn(process.execPath, jestArgs, {
     cwd: path.join(root, 'api-tests'), windowsHide: true,
     env: { ...process.env, API_BASE_URL: 'http://127.0.0.1:4001', NO_PROXY: 'localhost,127.0.0.1', FORCE_COLOR: '0' },
     stdio: ['ignore', 'pipe', 'pipe']

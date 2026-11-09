@@ -1,0 +1,104 @@
+Inicio 2026-11-09T23:11:04.605Z; revisión f87a564c2a03f1f5c052449c22eedacd00220de5; API local 4001.
+FAIL tests/cart.test.js
+  ● Console
+
+    console.log
+      Entorno de pruebas autorizado: http://127.0.0.1:4001
+
+      at validateTestEnvironment (config/testSafety.js:10:11)
+
+  ● CI - fallo intencional para validar propagación de errores
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 200
+
+      2 | // Demuestra que Jest transmite una assertion fallida al pipeline.
+      3 | test('CI - fallo intencional para validar propagación de errores', () => {
+    > 4 |   expect(200).toBe(201);
+        |               ^
+      5 | });
+      6 |
+
+      at Object.<anonymous> (scripts/fallo-controlado.cjs:4:15)
+
+FAIL tests/categories.test.js
+  ● Console
+
+    console.log
+      Entorno de pruebas autorizado: http://127.0.0.1:4001
+
+      at log (config/testSafety.js:18:11)
+
+  ● CI - fallo intencional para validar propagación de errores
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 200
+
+      2 | // Demuestra que Jest transmite una assertion fallida al pipeline.
+      3 | test('CI - fallo intencional para validar propagación de errores', () => {
+    > 4 |   expect(200).toBe(201);
+        |               ^
+      5 | });
+      6 |
+
+      at Object.<anonymous> (scripts/fallo-controlado.cjs:4:15)
+
+FAIL tests/products.test.js
+  ● Console
+
+    console.log
+      Entorno de pruebas autorizado: http://127.0.0.1:4001
+
+      at log (config/testSafety.js:18:11)
+
+  ● CI - fallo intencional para validar propagación de errores
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 200
+
+      2 | // Demuestra que Jest transmite una assertion fallida al pipeline.
+      3 | test('CI - fallo intencional para validar propagación de errores', () => {
+    > 4 |   expect(200).toBe(201);
+        |               ^
+      5 | });
+      6 |
+
+      at Object.<anonymous> (scripts/fallo-controlado.cjs:4:15)
+
+FAIL tests/auth.test.js
+  ● Console
+
+    console.log
+      Entorno de pruebas autorizado: http://127.0.0.1:4001
+
+      at log (config/testSafety.js:18:11)
+
+  ● CI - fallo intencional para validar propagación de errores
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 200
+
+      2 | // Demuestra que Jest transmite una assertion fallida al pipeline.
+      3 | test('CI - fallo intencional para validar propagación de errores', () => {
+    > 4 |   expect(200).toBe(201);
+        |               ^
+      5 | });
+      6 |
+
+      at Object.<anonymous> (scripts/fallo-controlado.cjs:4:15)
+
+Test Suites: 4 failed, 4 total
+Tests:       4 failed, 30 passed, 34 total
+Snapshots:   0 total
+Time:        1.438 s
+Ran all test suites.
+Test results written to: evidencias\entrega30\validacion-fallo.json
+Limpieza comprobada: base temporal eliminada.

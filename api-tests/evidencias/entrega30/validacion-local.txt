@@ -1,0 +1,9 @@
+Inicio 2026-11-09T23:10:53.287Z; revisión f87a564c2a03f1f5c052449c22eedacd00220de5; API local 4001.
+
+Test Suites: 4 passed, 4 total
+Tests:       30 passed, 30 total
+Snapshots:   0 total
+Time:        1.162 s, estimated 2 s
+Ran all test suites.
+Test results written to: evidencias\entrega30\validacion-local.json
+Limpieza comprobada: base temporal eliminada.
