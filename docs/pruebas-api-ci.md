@@ -2,11 +2,22 @@
 
 ## Validación local realizada
 
-El 9 de noviembre de 2026 se ejecutó validacion-local: 4 suites y 30 casos aprobados, código de salida 0. Luego validacion-fallo: los 30 casos funcionales aprobaron y las 4 assertions intencionales fallaron, código de salida 1. En ambas ejecuciones se comprobó la eliminación de la base temporal. Los archivos validacion-local* y validacion-fallo* conservan la evidencia. La verificación en GitHub Actions queda pendiente hasta publicar y observar las ejecuciones remotas.
+El 9 de noviembre de 2026 se ejecutó validacion-local: 4 suites y 30 casos aprobados, código de salida 0. Luego validacion-fallo: los 30 casos funcionales aprobaron y las 4 assertions intencionales fallaron, código de salida 1. En ambas ejecuciones se comprobó la eliminación de la base temporal. Los archivos validacion-local* y validacion-fallo* conservan la evidencia.
+
+## Resultados comprobados en GitHub Actions
+
+Se revisaron los JSON descargados de los artefactos de ambas ejecuciones sobre la revisión 13ed5235721c5a05e27a7e3a376ed70220efd93c.
+
+| Ejecución | Activación | Resultado | Código | Base temporal eliminada |
+|---|---|---|---|---|
+| [#5](https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42719118489) | Push automático | 30 aprobadas, 0 fallidas | 0 | Sí |
+| [#6](https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42724238705) | Manual con fallo_controlado | 30 aprobadas y 4 fallos intencionales | 1 | Sí |
+
+Las evidencias originales y sus capturas se conservan en api-tests/evidencias/caso3/. Se comprobó que los errores de las assertions hacen fallar el workflow y que aun así se conservan los resultados. El análisis estático con SonarQube corresponde a Persona 3 y no forma parte de esta validación.
 
 ## Flujo implementado
 
-La primera ejecución remota falló antes de las pruebas: MongoDB rechazó el kernel del runner ubuntu-latest (SERVER-121912). Se fijó runs-on en ubuntu-22.04 para evitar esa incompatibilidad. Esta corrección requiere una nueva ejecución remota para confirmar el resultado.
+La primera ejecución remota falló antes de las pruebas: MongoDB rechazó el kernel del runner ubuntu-latest (SERVER-121912). Se fijó runs-on en ubuntu-22.04 para evitar esa incompatibilidad. La ejecución #5 confirmó que esta corrección permitió completar el pipeline correctamente.
 
 GitHub Actions descarga el código, configura Node.js 22, inicia MongoDB 8 y espera su comprobación de salud. Instala las dependencias de backend y api-tests con npm ci y ejecuta npm run demo:entrega -- ci.
 
