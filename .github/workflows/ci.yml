@@ -100,9 +100,10 @@ jobs:
           # Community Build conserva un unico proyecto y una rama de analisis.
           # Publicamos la instantanea comprobada en ese proyecto. El check de CI
           # permite evaluar el resultado antes de integrar el pull request.
-          env -u GITHUB_ACTIONS -u GITHUB_EVENT_NAME -u GITHUB_EVENT_PATH \
+          env -u GITHUB_ACTION -u GITHUB_ACTIONS -u GITHUB_EVENT_NAME -u GITHUB_EVENT_PATH \
             -u GITHUB_REF -u GITHUB_HEAD_REF -u GITHUB_BASE_REF \
-            sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.qualitygate.timeout=300
+            sonar-scanner -Dsonar.scm.revision="$GITHUB_SHA" \
+            -Dsonar.qualitygate.wait=true -Dsonar.qualitygate.timeout=300
 
       - name: Guardar evidencias de pruebas API
         if: always()
