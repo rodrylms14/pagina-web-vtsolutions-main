@@ -1,0 +1,6 @@
+projectKey=vt-solutions
+serverUrl=https://mumbai-occurs-local-brings.trycloudflare.com
+serverVersion=26.11.0.134175
+dashboardUrl=https://mumbai-occurs-local-brings.trycloudflare.com/dashboard?id=vt-solutions
+ceTaskId=f81bbaf9-1351-468b-9dfe-71c4ad7ba57b
+ceTaskUrl=https://mumbai-occurs-local-brings.trycloudflare.com/api/ce/task?id=f81bbaf9-1351-468b-9dfe-71c4ad7ba57b
