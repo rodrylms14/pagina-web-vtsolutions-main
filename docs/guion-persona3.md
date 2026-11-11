@@ -46,4 +46,4 @@ Mostrar que el propietario debe exigir el check Pruebas API y SonarQube en la pr
 
 ## Repetición de la demostración
 
-En Actions elegir VT Solutions CI, seleccionar Run workflow y la rama caso3-sonarqube. Usar fallo_controlado=false para la ejecución normal y true para demostrar el fallo de una prueba. Mantener el túnel y SonarQube activos. Al recrear el túnel, preparar-demostracion.ps1 actualiza la URL del secreto.
+En Actions elegir VT Solutions CI, seleccionar Run workflow y la rama caso3-sonarqube. Usar fallo_controlado=false para la ejecución normal y true para demostrar el fallo de una prueba. Para repetir el rechazo del Quality Gate, seleccionar la rama demo-caso3-quality-gate con fallo_controlado=false. Al terminar esa demostración, ejecutar nuevamente caso3-sonarqube para restaurar la instantánea de entrega en el panel. Mantener el túnel y SonarQube activos. Al recrear el túnel, preparar-demostracion.ps1 actualiza la URL del secreto.

@@ -6,7 +6,7 @@ Universidad CENFOTEC · Caso de Estudio 3 · Persona 3 · 11 de noviembre de 202
 
 Se configuró SonarQube Community Build para analizar el código de VT Solutions y comunicar su Quality Gate al pipeline de GitHub Actions. La implementación genera cobertura del backend durante las pruebas API y entrega el reporte LCOV al scanner. La validación comprende la ejecución local, el análisis remoto a través de un túnel HTTPS y la propagación de fallos en el pipeline.
 
-El alcance de Persona 3 comprende la configuración de SonarQube, la conexión con CI, la interpretación de los hallazgos y la documentación. Se reutilizó el ejecutor de pruebas API del equipo. El pipeline y la configuración de pruebas existentes constituyen las dependencias de trabajo con las Personas 1 y 2.
+El análisis estático examina el código mediante reglas para detectar patrones que afectan su seguridad, fiabilidad y mantenibilidad. SonarQube reúne esos hallazgos, las métricas y el Quality Gate en un panel de seguimiento. El alcance de Persona 3 comprende la configuración de SonarQube, la conexión con CI, la interpretación de los hallazgos y la documentación. Se reutilizó el ejecutor de pruebas API del equipo. El pipeline y la configuración de pruebas existentes constituyen las dependencias de trabajo con las Personas 1 y 2.
 
 ## Herramientas y preparación
 
@@ -94,7 +94,7 @@ La priorización propuesta comienza por validar el alcance de seguridad de CORS,
 
 [Ejecución con fallo controlado de prueba](https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42974143141)
 
-La demostración de fallo de pruebas reutiliza el parámetro fallo_controlado del equipo. El fallo esperado pertenece a una aserción agregada expresamente por el ejecutor. El registro de entorno permite comprobar la limpieza de la base aun en ese caso. Los artefactos descargados se conservan bajo docs/evidencias/caso3.
+La demostración de fallo de pruebas reutiliza el parámetro fallo_controlado del equipo. Pasaron las treinta pruebas originales y fallaron cuatro aserciones de demostración, una por suite. El registro de entorno comprobó la limpieza de la base aun en ese caso. Los artefactos descargados se conservan bajo docs/evidencias/caso3.
 
 También se comprobó un Quality Gate fallido en una rama de demostración. Se agregó un formulario con una etiqueta sin asociación, se mantuvieron las pruebas API correctas y SonarQube rechazó las incidencias nuevas. La ejecución 42975017694 terminó en fallo en el paso del scanner. El archivo de demostración queda fuera de la rama de entrega.
 
