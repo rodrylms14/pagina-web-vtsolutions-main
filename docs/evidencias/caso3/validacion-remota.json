@@ -1,0 +1,23 @@
+{
+  "normal": {
+    "attempt": 3,
+    "url": "https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42973658804",
+    "sha": "2e328b65e2c809396e0db66e97786a89801a5ee9",
+    "conclusion": "success",
+    "id": 42973658804
+  },
+  "fallo_prueba": {
+    "attempt": 1,
+    "url": "https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42974143141",
+    "sha": "2e328b65e2c809396e0db66e97786a89801a5ee9",
+    "conclusion": "failure",
+    "id": 42974143141
+  },
+  "fallo_gate": {
+    "id": 42975017694,
+    "conclusion": "failure",
+    "attempt": 1,
+    "sha": "1852759a97e1b27ac5fe2d3c4c1d68cc92b68526",
+    "url": "https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42975017694"
+  }
+}

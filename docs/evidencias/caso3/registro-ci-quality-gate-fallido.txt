@@ -1,0 +1,6 @@
+Pruebas API y SonarQube	Ejecutar pruebas API y generar cobertura del backend	2026-11-11T06:49:12.2461517Z Test Suites: 4 passed, 4 total
+Pruebas API y SonarQube	Ejecutar pruebas API y generar cobertura del backend	2026-11-11T06:49:12.2462588Z Tests:       30 passed, 30 total
+Pruebas API y SonarQube	Ejecutar pruebas API y generar cobertura del backend	2026-11-11T06:49:12.4342858Z Limpieza comprobada: base temporal eliminada.
+Pruebas API y SonarQube	Analizar instantanea y esperar el Quality Gate	2026-11-11T06:50:04.5062610Z 06:50:04.505 INFO  ------------- Check Quality Gate status
+Pruebas API y SonarQube	Analizar instantanea y esperar el Quality Gate	2026-11-11T06:50:15.4347908Z 06:50:15.432 ERROR QUALITY GATE STATUS: FAILED - View details on ***/dashboard?id=vt-solutions
+Pruebas API y SonarQube	Analizar instantanea y esperar el Quality Gate	2026-11-11T06:50:15.4797797Z 06:50:15.479 INFO  EXECUTION FAILURE

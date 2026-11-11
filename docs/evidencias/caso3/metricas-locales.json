@@ -1,0 +1,61 @@
+{
+  "component": {
+    "key": "vt-solutions",
+    "name": "VT Solutions",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "coverage",
+        "value": "49.8",
+        "bestValue": false
+      },
+      {
+        "metric": "alert_status",
+        "value": "OK"
+      },
+      {
+        "metric": "bugs",
+        "value": "11",
+        "bestValue": false
+      },
+      {
+        "metric": "code_smells",
+        "value": "13",
+        "bestValue": false
+      },
+      {
+        "metric": "duplicated_lines_density",
+        "value": "7.9",
+        "bestValue": false
+      },
+      {
+        "metric": "lines_to_cover",
+        "value": "1534"
+      },
+      {
+        "metric": "branch_coverage",
+        "value": "66.1",
+        "bestValue": false
+      },
+      {
+        "metric": "ncloc",
+        "value": "3548"
+      },
+      {
+        "metric": "vulnerabilities",
+        "value": "20",
+        "bestValue": false
+      },
+      {
+        "metric": "line_coverage",
+        "value": "48.6",
+        "bestValue": false
+      },
+      {
+        "metric": "security_hotspots",
+        "value": "0",
+        "bestValue": true
+      }
+    ]
+  }
+}

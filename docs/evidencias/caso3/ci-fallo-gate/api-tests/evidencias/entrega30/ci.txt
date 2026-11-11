@@ -1,0 +1,41 @@
+Inicio 2026-11-11T06:49:10.737Z; revisión 1852759a97e1b27ac5fe2d3c4c1d68cc92b68526; API local 4001.
+PASS tests/categories.test.js
+  ● Console
+
+    console.log
+      Entorno de pruebas autorizado: http://127.0.0.1:4001
+
+      at validateTestEnvironment (config/testSafety.js:10:11)
+
+PASS tests/products.test.js
+  ● Console
+
+    console.log
+      Entorno de pruebas autorizado: http://127.0.0.1:4001
+
+      at log (config/testSafety.js:18:11)
+
+PASS tests/cart.test.js
+  ● Console
+
+    console.log
+      Entorno de pruebas autorizado: http://127.0.0.1:4001
+
+      at log (config/testSafety.js:18:11)
+
+PASS tests/auth.test.js
+  ● Console
+
+    console.log
+      Entorno de pruebas autorizado: http://127.0.0.1:4001
+
+      at log (config/testSafety.js:18:11)
+
+
+Test Suites: 4 passed, 4 total
+Tests:       30 passed, 30 total
+Snapshots:   0 total
+Time:        1.136 s
+Ran all test suites.
+Test results written to: evidencias/entrega30/ci.json
+Limpieza comprobada: base temporal eliminada.

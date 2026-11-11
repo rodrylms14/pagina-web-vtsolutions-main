@@ -1,5 +1,12 @@
 ﻿name: VT Solutions - CI
 
+permissions:
+  contents: read
+
+concurrency:
+  group: vt-solutions-sonarqube
+  cancel-in-progress: false
+
 on:
   push:
     branches: [main]
@@ -14,10 +21,10 @@ on:
 
 jobs:
   preparar-entorno:
-    name: Preparar entorno Node.js
+    name: Pruebas API y SonarQube
     # Evitar el kernel de Ubuntu 26 incompatible con MongoDB (SERVER-121912).
     runs-on: ubuntu-22.04
-    timeout-minutes: 10
+    timeout-minutes: 20
     services:
       mongodb:
         image: mongo:8.0
@@ -30,8 +37,16 @@ jobs:
           --health-retries 5
 
     steps:
+      - name: Comprobar disponibilidad de secretos para el cambio
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository
+        run: |
+          echo "::error::El análisis necesita SONAR_TOKEN. Los pull requests desde forks requieren una revisión del equipo y una rama del repositorio para ejecutar este pipeline."
+          exit 1
+
       - name: Descargar repositorio
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Configurar Node.js
         uses: actions/setup-node@v5
@@ -52,23 +67,53 @@ jobs:
 
       - name: Confirmar preparación del entorno
         run: echo "Entorno de VT Solutions preparado correctamente"
-      - name: Ejecutar pruebas API
-        working-directory: ./api-tests
+      - name: Ejecutar pruebas API y generar cobertura del backend
         env:
           TEST_MONGODB_SERVER: mongodb://127.0.0.1:27017
           API_BASE_URL: http://127.0.0.1:4001
         run: |
+          args=(ci)
           if [ "${{ inputs.fallo_controlado }}" = "true" ]; then
-            npm run demo:entrega -- ci --fallo-controlado
-          else
-            npm run demo:entrega -- ci
+            args+=(--fallo-controlado)
           fi
+          npx --yes --package=c8@12.0.0 c8 \
+            --all --src=backend/src --include='backend/src/**/*.js' \
+            --reporter=text --reporter=lcov --reports-dir=coverage \
+            node api-tests/scripts/run-entrega.js "${args[@]}"
+          test -s coverage/lcov.info
+
+      - name: Instalar SonarScanner CLI
+        run: |
+          curl --fail --location --retry 2 \
+            --output "$RUNNER_TEMP/sonar-scanner.zip" \
+            https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-8.0.1.6346-linux-x64.zip
+          unzip -q "$RUNNER_TEMP/sonar-scanner.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/sonar-scanner-8.0.1.6346-linux-x64/bin" >> "$GITHUB_PATH"
+
+      - name: Analizar instantanea y esperar el Quality Gate
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          test -n "$SONAR_TOKEN" || { echo "::error::Falta el secreto SONAR_TOKEN"; exit 1; }
+          test -n "$SONAR_HOST_URL" || { echo "::error::Falta el secreto SONAR_HOST_URL"; exit 1; }
+          # Community Build conserva un unico proyecto y una rama de analisis.
+          # Publicamos la instantanea comprobada en ese proyecto. El check de CI
+          # permite evaluar el resultado antes de integrar el pull request.
+          env -u GITHUB_ACTION -u GITHUB_ACTIONS -u GITHUB_EVENT_NAME -u GITHUB_EVENT_PATH \
+            -u GITHUB_REF -u GITHUB_HEAD_REF -u GITHUB_BASE_REF \
+            sonar-scanner -Dsonar.scm.revision="$GITHUB_SHA" \
+            -Dsonar.qualitygate.wait=true -Dsonar.qualitygate.timeout=300
 
       - name: Guardar evidencias de pruebas API
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: pruebas-api-${{ github.run_id }}-${{ github.run_attempt }}
-          path: api-tests/evidencias/entrega30/ci*
+          path: |
+            api-tests/evidencias/entrega30/ci*
+            coverage/lcov.info
+            .scannerwork/report-task.txt
+          include-hidden-files: true
           retention-days: 14
           if-no-files-found: warn

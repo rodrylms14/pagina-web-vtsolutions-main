@@ -1,0 +1,10 @@
+Pruebas API y SonarQube	Ejecutar pruebas API y generar cobertura del backend	2026-11-11T06:45:11.1146235Z ^[[36;1m  --reporter=text --reporter=lcov --reports-dir=coverage \^[[0m
+Pruebas API y SonarQube	Ejecutar pruebas API y generar cobertura del backend	2026-11-11T06:45:11.1146683Z ^[[36;1mtest -s coverage/lcov.info^[[0m
+Pruebas API y SonarQube	Ejecutar pruebas API y generar cobertura del backend	2026-11-11T06:45:13.5338662Z Test Suites: 4 passed, 4 total
+Pruebas API y SonarQube	Ejecutar pruebas API y generar cobertura del backend	2026-11-11T06:45:13.5339187Z Tests:       30 passed, 30 total
+Pruebas API y SonarQube	Ejecutar pruebas API y generar cobertura del backend	2026-11-11T06:45:13.6123739Z Limpieza comprobada: base temporal eliminada.
+Pruebas API y SonarQube	Analizar instantanea y esperar el Quality Gate	2026-11-11T06:45:46.1429385Z 06:45:46.137 INFO  Analysing [/home/runner/work/pagina-web-vtsolutions-main/pagina-web-vtsolutions-main/coverage/lcov.info]
+Pruebas API y SonarQube	Analizar instantanea y esperar el Quality Gate	2026-11-11T06:45:54.0143347Z 06:45:54.014 INFO  ------------- Check Quality Gate status
+Pruebas API y SonarQube	Analizar instantanea y esperar el Quality Gate	2026-11-11T06:46:04.9320451Z 06:46:04.931 INFO  QUALITY GATE STATUS: PASSED - View details on ***/dashboard?id=vt-solutions
+Pruebas API y SonarQube	Analizar instantanea y esperar el Quality Gate	2026-11-11T06:46:05.0460738Z 06:46:05.045 INFO  EXECUTION SUCCESS
+Pruebas API y SonarQube	Guardar evidencias de pruebas API	coverage/lcov.info
