@@ -15,7 +15,7 @@ El análisis estático examina el código mediante reglas para detectar patrones
 | Servidor de análisis | SonarQube Community Build 26.11.0.134175 para Windows |
 | Java del servidor | Microsoft OpenJDK 21.0.13 |
 | Scanner | SonarScanner CLI 8.0.1.6346 |
-| Repositorio de trabajo | rama caso3-sonarqube de pagina-web-vtsolutions-main |
+| Repositorio de trabajo | pagina-web-vtsolutions-main; cambios de caso3-sonarqube integrados en main mediante el PR #2 |
 | Ejecución CI | GitHub Actions en Ubuntu 22.04 y Node.js 22 |
 | Cobertura | c8 12.0.0, reporte LCOV del backend |
 | Base de pruebas CI | MongoDB 8.0 local al ejecutor |
@@ -90,7 +90,7 @@ La priorización propuesta comienza por validar el alcance de seguridad de CORS,
 | Cobertura importada | LCOV y registros del scanner en el artefacto de la ejecución normal |
 | Informe procesado | report-task.txt y Quality Gate devuelto por el servidor |
 
-[Ejecución normal de GitHub Actions](https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42973658804)
+[Ejecución normal de GitHub Actions, intento 3](https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42973658804/attempts/3)
 
 [Ejecución con fallo controlado de prueba](https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42974143141)
 
@@ -100,9 +100,11 @@ También se comprobó un Quality Gate fallido en una rama de demostración. Se a
 
 [Ejecución con Quality Gate fallido](https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42975017694)
 
-## Protección de la integración
+## Integración en main y protección de la rama
 
-La comprobación Pruebas API y SonarQube puede exigirse antes de integrar a main. El repositorio se encontró sin protección de esa rama y la cuenta colaboradora carece del permiso de administración. El propietario debe activar la protección con el check requerido y actualizar la rama con la base antes de integrar. El archivo docs/proteccion-main.json contiene la configuración preparada para aplicar con GitHub CLI. Hasta que el propietario la active, la obligatoriedad del bloqueo permanece pendiente.
+La implementación se integró en main mediante el [PR #2](https://github.com/rodrylms14/pagina-web-vtsolutions-main/pull/2), fusionado el 11 de noviembre de 2026. El commit de integración es `262645e47b9859bca3ed9a06edb23986e974eefe`. Antes de la integración, la [comprobación del último commit de entrega](https://github.com/rodrylms14/pagina-web-vtsolutions-main/actions/runs/42975697289) terminó correctamente.
+
+La comprobación Pruebas API y SonarQube puede exigirse para futuras integraciones. Durante la preparación se encontró main sin protección y la cuenta colaboradora carecía del permiso administrativo para activarla. El archivo [proteccion-main.json](proteccion-main.json) contiene la configuración preparada; su aplicación corresponde al propietario. La fusión del PR no confirma por sí misma que la protección esté activada.
 
 ## Continuidad y limitaciones
 
