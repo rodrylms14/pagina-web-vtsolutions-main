@@ -1,69 +1,41 @@
-# Automatización de Pruebas Funcionales de API REST – VT Solutions
+## Entrega final — Automatización de pruebas de API
 
-## Descripción
+### Arquitectura e integración
 
-Este proyecto implementa un framework de automatización de pruebas funcionales para la API REST de VT Solutions, utilizando JavaScript, Jest y Axios.
+El framework de automatización de VT Solutions utiliza JavaScript, Jest y Axios, con una estructura organizada por responsabilidades.
 
-El objetivo es verificar el funcionamiento de los endpoints mediante casos de prueba positivos y negativos, validando códigos de estado HTTP y respuestas JSON.
+Los componentes principales son:
 
-## Tecnologías utilizadas
+- `config/apiConfig.js`: centraliza la dirección de la API mediante la variable `API_BASE_URL`.
+- `config/jestSetup.js`: ejecuta la validación del entorno antes de las pruebas.
+- `config/testSafety.js`: restringe la ejecución a una API HTTP local en el puerto `4001`.
+- `clients/httpClient.js`: proporciona un cliente Axios reutilizable, con un tiempo máximo de espera de 10 segundos y manejo explícito de códigos HTTP.
+- `data/`: contiene datos reutilizables para las pruebas.
+- `tests/`: organiza los casos automatizados por módulo funcional.
+- `jest.entrega.config.cjs`: define la selección de pruebas y el tiempo máximo de ejecución para la entrega.
+- `scripts/run-entrega.js`: automatiza la preparación, ejecución, generación de evidencias y limpieza del entorno.
 
-- **Node.js:** entorno de ejecución de JavaScript.
-- **Jest:** framework para ejecutar pruebas y validar resultados.
-- **Axios:** cliente HTTP para consumir los endpoints.
-- **Express:** framework utilizado por la API.
-- **MongoDB:** base de datos de la aplicación.
+Esta separación facilita la reutilización del código, el mantenimiento y la integración de nuevos casos de prueba.
 
-## Arquitectura del framework
+### Módulos y casos automatizados
 
-El proyecto utiliza una estructura organizada por responsabilidades:
+La configuración específica de la entrega final selecciona cuatro módulos:
 
-- `config/`: configuración de la API, Jest y validaciones de seguridad.
-- `clients/`: cliente HTTP reutilizable basado en Axios.
-- `data/`: generación de datos de prueba.
-- `tests/`: casos de prueba automatizados.
-- `utils/`: espacio reservado para funciones auxiliares reutilizables.
-- `evidencias/`: capturas de los resultados de ejecución.
+| Módulo | Archivo | Casos declarados |
+|---|---|---:|
+| Autenticación | `auth.test.js` | 10 |
+| Categorías | `categories.test.js` | 5 |
+| Productos | `products.test.js` | 5 |
+| Carrito | `cart.test.js` | 10 |
+| **Total** | | **30** |
 
-Esta separación facilita el mantenimiento y la incorporación de nuevos casos de prueba.
+El conteo corresponde a los casos declarados en los archivos seleccionados para la entrega.
 
-## Configuración del entorno
+### Detalle de los casos de autenticación
 
-El backend habitual utiliza el puerto `4000` y la base de datos `vt_solutions`.
+El módulo de autenticación contiene 10 casos automatizados que verifican escenarios positivos y negativos de registro e inicio de sesión.
 
-Para las pruebas automatizadas se utiliza un entorno independiente:
-
-- **Puerto:** `4001`
-- **Base de datos:** `vt_solutions_test`
-- **Archivo de configuración del backend:** `.env.test`
-
-El framework incluye una validación que restringe la ejecución de pruebas al servidor local autorizado en el puerto `4001`.
-
-## Instalación y ejecución
-
-1. Tener Node.js y MongoDB instalados.
-2. Iniciar MongoDB.
-3. Iniciar el backend de pruebas desde la carpeta `backend`:
-
-   ```powershell
-   node --env-file=.env.test src/server.js
-   ```
-
-4. Abrir otra terminal en `api-tests` e instalar las dependencias:
-
-   ```powershell
-   npm install
-   ```
-
-5. Ejecutar las pruebas automatizadas:
-
-   ```powershell
-   npm test
-   ```
-
-## Casos de prueba de autenticación
-
-| ID | Caso | HTTP esperado |
+| ID | Caso de prueba | HTTP esperado |
 |---|---|---|
 | AUTH-01 | Registro exitoso | 201 |
 | AUTH-02 | Registro sin nombre | 400 |
@@ -76,29 +48,118 @@ El framework incluye una validación que restringe la ejecución de pruebas al s
 | AUTH-09 | Usuario inexistente | 404 |
 | AUTH-10 | Contraseña incorrecta | 401 |
 
-## Resultados obtenidos
+Estos casos permiten validar tanto el funcionamiento esperado de los endpoints como el manejo de solicitudes inválidas y credenciales incorrectas.
 
-En la ejecución de las pruebas de autenticación se obtuvo:
+### Requisitos previos
 
-- **2 suites aprobadas.**
-- **11 pruebas aprobadas.**
+Para ejecutar la demostración local se requiere:
+
+- Node.js y npm.
+- MongoDB instalado y ejecutándose localmente en el puerto `27017`.
+- Dependencias instaladas en las carpetas `backend` y `api-tests`.
+- Puerto `4001` disponible.
+
+Para instalar las dependencias del proyecto, ejecutar desde la raíz del repositorio:
+
+**Backend:**
+
+```powershell
+cd backend
+npm install
+```
+
+**Framework de pruebas:**
+
+```powershell
+cd ../api-tests
+npm install
+```
+
+Estos comandos deben ejecutarse antes de utilizar el framework por primera vez o cuando cambien sus dependencias.
+
+### Ejecución de la entrega final
+
+Desde la carpeta `api-tests`, ejecutar:
+
+```powershell
+npm run demo:entrega
+```
+
+Este comando realiza automáticamente las siguientes operaciones:
+
+1. Valida que el servidor MongoDB configurado sea local.
+2. Genera una base de datos temporal con un identificador único.
+3. Inicia el backend de VT Solutions en `127.0.0.1:4001`.
+4. Ejecuta las pruebas seleccionadas mediante Jest.
+5. Genera archivos de evidencia.
+6. Cierra el servidor y elimina la base de datos temporal.
+7. Registra información sobre la ejecución y la limpieza.
+
+No es necesario iniciar manualmente el backend cuando se utiliza este procedimiento.
+
+### Otros comandos disponibles
+
+**Ejecución general:**
+
+```powershell
+npm test
+```
+
+Ejecuta Jest utilizando su configuración general. Requiere que el entorno de pruebas correspondiente esté preparado.
+
+**Ejecución con configuración de entrega:**
+
+```powershell
+npm run test:entrega
+```
+
+Ejecuta los módulos seleccionados en `jest.entrega.config.cjs`. Este comando no inicia automáticamente el backend ni crea una base temporal.
+
+**Demostración con fallo controlado:**
+
+```powershell
+npm run demo:entrega -- --fallo-controlado
+```
+
+Permite demostrar la detección de un fallo introducido intencionalmente. Esta ejecución debe producir un resultado fallido y se utiliza únicamente como evidencia de la capacidad de detección del framework.
+
+### Medidas de seguridad
+
+El framework incorpora distintas medidas para reducir riesgos durante la automatización:
+
+- La configuración de Jest carga `jestSetup.js` antes de los archivos de prueba.
+- `testSafety.js` permite únicamente conexiones HTTP a `localhost` o `127.0.0.1` en el puerto `4001`.
+- El ejecutor de demostración acepta únicamente un servidor MongoDB local.
+- Cada demostración utiliza una base de datos temporal independiente.
+- Al finalizar, el ejecutor intenta eliminar esa base y verifica su eliminación.
+
+La validación de la URL de la API no garantiza por sí sola el aislamiento de la base de datos. Por esta razón, se recomienda utilizar el ejecutor de demostración para las validaciones integradas de la entrega final.
+
+### Evidencias generadas
+
+El ejecutor almacena los resultados en:
+
+`api-tests/evidencias/entrega30/`
+
+Los archivos principales son:
+
+- `entrega30.txt`: salida de la ejecución automatizada.
+- `entrega30.json`: resultados detallados de Jest.
+- `entrega30-entorno.json`: información del entorno, revisión de Git, resultado del proceso y verificación de limpieza.
+
+### Resultados de validación local
+
+Durante la validación de integración de la entrega final se obtuvo:
+
+- **4 suites aprobadas.**
+- **30 pruebas aprobadas.**
 - **0 pruebas fallidas.**
-- **Tiempo de ejecución:** 1,315 segundos.
+- **Limpieza de la base temporal confirmada.**
 
-Los resultados incluyen 10 casos funcionales de autenticación y una prueba adicional de configuración del entorno.
+Estos resultados corresponden a la ejecución local de `npm run demo:entrega` y no sustituyen la validación de otras configuraciones o entornos de ejecución.
 
-## Evidencias
+### Estado de la entrega final
 
-Las capturas de ejecución se almacenan en la carpeta `evidencias/`.
+La arquitectura base del framework, la configuración de Jest y Axios, las validaciones de seguridad y la integración de los 30 casos seleccionados fueron verificadas localmente.
 
-## Consideraciones
-
-Los usuarios de prueba se generan con correos electrónicos únicos para permitir ejecuciones repetidas.
-
-Las pruebas de registro crean documentos en `vt_solutions_test`. Actualmente no se realiza limpieza automática de esos registros.
-
-La validación del puerto es una medida de protección adicional y no sustituye la verificación de la base de datos del backend.
-
-## Estado del proyecto
-
-El módulo de autenticación y la infraestructura inicial están implementados y verificados. Los demás módulos funcionales deben integrarse y validarse como parte del trabajo del equipo.
+El proyecto dispone de un procedimiento reproducible para ejecutar las pruebas y generar evidencias de sus resultados.

@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-11-19T22:58:04.154Z",
+  "dbName": "vt_solutions_entrega_test_70bd55f14d684acb8c9cfcc65b7dcb8b",
+  "port": 4001,
+  "node": "v22.14.0",
+  "mongoose": "9.4.1",
+  "sourceRevision": "4c7e5c6d57e453e3463ce63243ff955d401aa313",
+  "controlledFailure": false,
+  "exitCode": 0,
+  "signal": null,
+  "beforeDrop": {
+    "categories": 0,
+    "carts": 0,
+    "users": 11,
+    "products": 0,
+    "orders": 0
+  },
+  "databaseRemoved": true,
+  "finishedAt": "2026-11-19T22:58:19.134Z"
+}
